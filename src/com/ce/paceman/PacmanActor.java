@@ -1,0 +1,70 @@
+package com.ce.paceman;
+
+import com.ce.paceman.DTO.ActionDTO;
+import com.ce.paceman.connection.Controller;
+import com.ce.paceman.infra.Actor;
+
+public class PacmanActor extends Actor<PacmanGame> {
+
+    public PacmanActor(PacmanGame game) {
+        super(game);
+    }
+
+    @Override
+    public void update() {
+        switch (game.getState()) {
+            case INITIALIZING: updateInitializing(); break;
+            case OL_PRESENTS: updateOLPresents(); break;
+            case TITLE: updateTitle(); break;
+            case READY: updateReady(); break;
+            case READY2: updateReady2(); break;
+            case PLAYING: updatePlaying(); break;
+            case PACMAN_DIED: updatePacmanDied(); break;
+            case GHOST_CATCHED: updateGhostCatched(); break;
+            case LEVEL_CLEARED: updateLevelCleared(); break;
+            case GAME_OVER: updateGameOver(); break;
+        }
+       // PacmanGame.printMaze();
+
+
+        ActionDTO actionDTO = new ActionDTO();
+        actionDTO.getGameStateDTO().setMatriz(game.maze);
+
+
+        Controller.pipe.sendMessage(actionDTO.serialize());
+    }
+
+    public void updateInitializing() {
+    }
+
+    public void updateOLPresents() {
+    }
+
+    public void updateTitle() {
+    }
+
+    public void updateReady() {
+    }
+
+    public void updateReady2() {
+    }
+
+    public void updatePlaying() {
+    }
+
+    public void updatePacmanDied() {
+    }
+
+    public void updateGhostCatched() {
+    }
+
+    public void updateLevelCleared() {
+    }
+
+    public void updateGameOver() {
+    }
+
+    public void stateChanged() {
+    }
+    
+}
